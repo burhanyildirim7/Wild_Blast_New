@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class BinaSatinAlma : MonoBehaviour
 {
 	[SerializeField] private Text _priceText;
-    [SerializeField] private GameObject _contentObject,_bosAlanObject;
+    [SerializeField] private GameObject _bosAlanObject;
     [SerializeField] private ParticleSystem coinParticles;
     int coins;
 	int _cost;
@@ -21,19 +21,8 @@ public class BinaSatinAlma : MonoBehaviour
             PuzzleMatchManager.instance.coinsSystem.SpendCoins(_cost);
             coinParticles.Play();
             SoundManager.instance.PlaySound("CoinsPopButton");
-            if (transform.parent.transform.childCount<=1)
-            {
-                // content'de 1 ve 1den az obje varsa çalışır.
-                transform.parent = null;
-            }
-            else
-            {
-                PlayerPrefs.SetInt("Acildimi" + _bosAlanObject.GetComponent<BinaKurma>()._haritaNo + _bosAlanObject.GetComponent<BinaKurma>()._binaNo, 1);
-                _bosAlanObject.transform.GetChild(1).gameObject.SetActive(true);
-                transform.parent.GetChild(1).GetChild(transform.parent.GetChild(1).transform.childCount - 1).gameObject.SetActive(false);
-                transform.parent = null;
-            }
-            _contentObject.GetComponent<ContentAyarlama>().ListeSirasiDuzelt();
+            PlayerPrefs.SetInt("Acildimi" + _bosAlanObject.GetComponent<BinaKurma>()._haritaNo + _bosAlanObject.GetComponent<BinaKurma>()._binaNo, 1);
+            _bosAlanObject.transform.GetChild(1).gameObject.SetActive(true);
             Destroy(gameObject);
 
         }

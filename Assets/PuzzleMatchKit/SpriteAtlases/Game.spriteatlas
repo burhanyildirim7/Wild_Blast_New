@@ -130,7 +130,7 @@ SpriteAtlas:
   - BallParticles
   - Dynamite
   - Stone
-  - BackGround
+  - Background
   - CollectItem
   - ColorBomb
   - Ice
