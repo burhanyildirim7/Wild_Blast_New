@@ -8,7 +8,7 @@ public class BinaAnimasyon : MonoBehaviour
 {
     Animator _animator ;
     [SerializeField] GameObject _bosAlan;
-
+    [SerializeField] List<Sprite> _binaGorselleri = new List<Sprite>();
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +26,7 @@ public class BinaAnimasyon : MonoBehaviour
         }
         else
         {
+            gameObject.GetComponent<Image>().sprite = _binaGorselleri[PlayerPrefs.GetInt("BinaGorseli" + transform.parent.GetComponent<BinaKurma>()._haritaNo + transform.parent.GetComponent<BinaKurma>()._binaNo)];
             _bosAlan.GetComponent<Image>().enabled = false;
             _bosAlan.transform.GetChild(0).gameObject.SetActive(false);
         }

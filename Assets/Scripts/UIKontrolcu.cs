@@ -60,4 +60,9 @@ public class UIKontrolcu : MonoBehaviour
         //lifeImage.sprite = lives == 0 ? disabledLifeSprite : enabledLifeSprite;
         _buyCan.transform.GetComponent<Button>().enabled = false;
     }
+    public void YildizGuncelle(int _cost)
+    {
+        PlayerPrefs.SetInt("HomeSceneToplamYildiz", PlayerPrefs.GetInt("HomeSceneToplamYildiz") - _cost);
+        _yildizText.text = PlayerPrefs.GetInt("HomeSceneToplamYildiz").ToString();
+    }
 }

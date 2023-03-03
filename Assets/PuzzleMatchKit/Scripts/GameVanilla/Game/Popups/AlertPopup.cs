@@ -34,6 +34,10 @@ namespace GameVanilla.Game.Popups
             Assert.IsNotNull(titleText);
             Assert.IsNotNull(bodyText);
         }
+        private void Start()
+        {
+            _baseScene = GameObject.FindObjectOfType<BaseScene>();
+        }
 
         /// <summary>
         /// Called when the popup button is pressed.

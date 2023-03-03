@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class BinaKurma : MonoBehaviour
 {
 
-    [SerializeField] GameObject _bosAlan, _tamBina,_buildingChoicePanel,_productPanel;
     [SerializeField] public int _binaNo,_haritaNo;
 
 
@@ -26,7 +25,8 @@ public class BinaKurma : MonoBehaviour
     public void BosAlanButtonFonk()
     {
 
-        _buildingChoicePanel.SetActive(true);
+        GameObject.Find("Building_Choice_Panel").transform.GetChild(0).gameObject.SetActive(true);
+        PlayerPrefs.SetInt("SecilenBina", _binaNo);
         //PlayerPrefs.SetInt("BinaBosAlan"+_haritaNo+_binaNo,1);
         GameObject.Find("ToDoListButton").GetComponent<ToDoListAcma>().AnaEkrandaPanelAcma();
     }
@@ -34,8 +34,7 @@ public class BinaKurma : MonoBehaviour
 
     public void TamBinaButtonFonk()
     {
-
-        _productPanel.SetActive(true);
+        GameObject.Find("Bina_"+_binaNo+"_Panel").transform.GetChild(0).gameObject.SetActive(true);
         GameObject.Find("ToDoListButton").GetComponent<ToDoListAcma>().AnaEkrandaPanelAcma();
 
     }
