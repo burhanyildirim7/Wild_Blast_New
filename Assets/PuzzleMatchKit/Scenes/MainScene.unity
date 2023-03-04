@@ -8878,6 +8878,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &438579481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12388,6 +12389,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &636673031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12886,6 +12888,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &676200021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13333,6 +13336,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &691482872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14633,6 +14637,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &775242757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15412,7 +15417,7 @@ GameObject:
   m_Component:
   - component: {fileID: 826064037}
   m_Layer: 5
-  m_Name: ToDoListPanel
+  m_Name: ToDoListPage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16002,6 +16007,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &846251342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32399,6 +32405,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1712949201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36058,6 +36065,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1908509577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37887,6 +37895,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &2015823964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38198,6 +38207,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &2033933121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42637,6 +42647,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &114263103820298891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47189,7 +47200,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &114263103984223866
 RectTransform:
   m_ObjectHideFlags: 0
@@ -51415,7 +51426,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &114263104094673941
 RectTransform:
   m_ObjectHideFlags: 0
@@ -53781,7 +53792,7 @@ MonoBehaviour:
   m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
-  m_DecelerationRate: 0.0005
+  m_DecelerationRate: 0.005
   m_ScrollSensitivity: 1
   m_Viewport: {fileID: 114263105928649370}
   m_HorizontalScrollbar: {fileID: 114263105764846050}
@@ -68126,7 +68137,7 @@ MonoBehaviour:
   m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
-  m_DecelerationRate: 0.0005
+  m_DecelerationRate: 0.005
   m_ScrollSensitivity: 1
   m_Viewport: {fileID: 114263105885898383}
   m_HorizontalScrollbar: {fileID: 114263105372441917}
@@ -70107,6 +70118,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &114263104598363474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79393,7 +79405,7 @@ MonoBehaviour:
   m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
-  m_DecelerationRate: 0.0005
+  m_DecelerationRate: 0.005
   m_ScrollSensitivity: 1
   m_Viewport: {fileID: 114263104645696364}
   m_HorizontalScrollbar: {fileID: 114263105673683878}
@@ -84356,7 +84368,7 @@ MonoBehaviour:
   m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
-  m_DecelerationRate: 0.0005
+  m_DecelerationRate: 0.005
   m_ScrollSensitivity: 1
   m_Viewport: {fileID: 114263105833959082}
   m_HorizontalScrollbar: {fileID: 114263105134126399}
@@ -87734,6 +87746,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &114263105128280176
 GameObject:
   m_ObjectHideFlags: 0
@@ -106962,7 +106975,7 @@ MonoBehaviour:
   m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
-  m_DecelerationRate: 0.0005
+  m_DecelerationRate: 0.005
   m_ScrollSensitivity: 1
   m_Viewport: {fileID: 114263105356339954}
   m_HorizontalScrollbar: {fileID: 114263105292017178}
@@ -117794,6 +117807,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &114263105900863598
 MonoBehaviour:
   m_ObjectHideFlags: 0

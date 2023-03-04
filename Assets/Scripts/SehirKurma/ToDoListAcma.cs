@@ -10,7 +10,7 @@ public class ToDoListAcma : MonoBehaviour
     public void ToDoListAcmaButton()
     {
 
-        GameObject.Find("ToDoListButton").transform.GetChild(0).gameObject.SetActive(true);
+        GameObject.Find("ToDoListPage").transform.GetChild(0).gameObject.SetActive(true);
         AnaEkrandaPanelAcma();
     }
     public void AnaEkrandaPanelAcma()
