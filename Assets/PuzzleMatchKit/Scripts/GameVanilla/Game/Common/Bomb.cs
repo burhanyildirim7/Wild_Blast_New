@@ -28,12 +28,14 @@ namespace GameVanilla.Game.Common
         protected bool hasMatchingCombo;
         protected bool hasNonMatchingCombo;
 
-		/// <summary>
-		/// Resolves the booster's effect at the specified tile index of the specified scene.
-		/// </summary>
-		/// <param name="scene">The scene in which to apply the booster.</param>
-		/// <param name="idx">The tile index in which the booster is located.</param>
-		/// <returns>The list containing the blocks destroyed by the booster.</returns>
+        public GameObject _roketler;
+
+        /// <summary>
+        /// Resolves the booster's effect at the specified tile index of the specified scene.
+        /// </summary>
+        /// <param name="scene">The scene in which to apply the booster.</param>
+        /// <param name="idx">The tile index in which the booster is located.</param>
+        /// <returns>The list containing the blocks destroyed by the booster.</returns>
         public override List<GameObject> Resolve(GameScene scene, int idx)
         {
             var tiles = new List<GameObject>();
@@ -42,82 +44,84 @@ namespace GameVanilla.Game.Common
             switch (direction)
             {
                 case Direction.Horizontal:
-                {
-                    for (var i = 0; i < scene.level.width; i++)
                     {
-                        AddTile(tiles, scene, i, y);
-                    }
+                        for (var i = 0; i < scene.level.width; i++)
+                        {
+                            AddTile(tiles, scene, i, y);
+                        }
 
-                    var combo = GetCombo(scene, x, y);
-                    switch (combo)
-                    {
-                        case ComboType.Matching:
-                            for (var i = 0; i < scene.level.width; i++)
-                            {
-                                AddTile(tiles, scene, i, y - 1);
-                            }
-                            for (var i = 0; i < scene.level.width; i++)
-                            {
-                                AddTile(tiles, scene, i, y + 1);
-                            }
-                            hasMatchingCombo = true;
-                            break;
+                        var combo = GetCombo(scene, x, y);
+                        switch (combo)
+                        {
+                            case ComboType.Matching:
+                                for (var i = 0; i < scene.level.width; i++)
+                                {
+                                    AddTile(tiles, scene, i, y - 1);
+                                }
+                                for (var i = 0; i < scene.level.width; i++)
+                                {
+                                    AddTile(tiles, scene, i, y + 1);
+                                }
+                                hasMatchingCombo = true;
+                                break;
 
-                        case ComboType.NonMatching:
-                            for (var j = 0; j < scene.level.height; j++)
-                            {
-                                AddTile(tiles, scene, x, j);
-                            }
-                            hasNonMatchingCombo = true;
-                            break;
+                            case ComboType.NonMatching:
+                                for (var j = 0; j < scene.level.height; j++)
+                                {
+                                    AddTile(tiles, scene, x, j);
+                                }
+                                hasNonMatchingCombo = true;
+                                break;
+                        }
                     }
-                }
                     break;
 
                 case Direction.Vertical:
-                {
-                    for (var j = 0; j < scene.level.height; j++)
                     {
-                        AddTile(tiles, scene, x, j);
-                    }
+                        for (var j = 0; j < scene.level.height; j++)
+                        {
+                            AddTile(tiles, scene, x, j);
+                        }
 
-                    var combo = GetCombo(scene, x, y);
-                    switch (combo)
-                    {
-                        case ComboType.Matching:
-                            for (var j = 0; j < scene.level.height; j++)
-                            {
-                                AddTile(tiles, scene, x - 1, j);
-                            }
-                            for (var j = 0; j < scene.level.height; j++)
-                            {
-                                AddTile(tiles, scene, x + 1, j);
-                            }
-                            hasMatchingCombo = true;
-                            break;
+                        var combo = GetCombo(scene, x, y);
+                        switch (combo)
+                        {
+                            case ComboType.Matching:
+                                for (var j = 0; j < scene.level.height; j++)
+                                {
+                                    AddTile(tiles, scene, x - 1, j);
+                                }
+                                for (var j = 0; j < scene.level.height; j++)
+                                {
+                                    AddTile(tiles, scene, x + 1, j);
+                                }
+                                hasMatchingCombo = true;
+                                break;
 
-                        case ComboType.NonMatching:
-                            for (var i = 0; i < scene.level.width; i++)
-                            {
-                                AddTile(tiles, scene, i, y);
-                            }
-                            hasNonMatchingCombo = true;
-                            break;
+                            case ComboType.NonMatching:
+                                for (var i = 0; i < scene.level.width; i++)
+                                {
+                                    AddTile(tiles, scene, i, y);
+                                }
+                                hasNonMatchingCombo = true;
+                                break;
+                        }
                     }
-                }
                     break;
             }
             return tiles;
         }
 
-		/// <summary>
-		/// Shows the visual effects when the booster effect is resolved.
-		/// </summary>
-		/// <param name="gamePools">The game pools containing the visual effects.</param>
-		/// <param name="scene">The scene in which to apply the booster.</param>
-		/// <param name="idx">The tile index in which the booster is located.</param>
+        /// <summary>
+        /// Shows the visual effects when the booster effect is resolved.
+        /// </summary>
+        /// <param name="gamePools">The game pools containing the visual effects.</param>
+        /// <param name="scene">The scene in which to apply the booster.</param>
+        /// <param name="idx">The tile index in which the booster is located.</param>
         public override void ShowFx(GamePools gamePools, GameScene scene, int idx)
         {
+            RoketleriOlustur();
+
             var x = idx % scene.level.width;
             var y = idx / scene.level.width;
             if (hasMatchingCombo)
@@ -145,6 +149,14 @@ namespace GameVanilla.Game.Common
                 ShowFx(gamePools, scene, x, y, direction);
             }
             SoundManager.instance.PlaySound("Bomb");
+        }
+
+        private void RoketleriOlustur()
+        {
+            var obj = Instantiate(_roketler);
+            //obj.transform.SetParent(transform);
+            obj.transform.position = gameObject.transform.position;
+
         }
 
         /// <summary>

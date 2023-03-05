@@ -9837,6 +9837,8 @@ MonoBehaviour:
       m_Calls: []
   type: 0
   direction: 0
+  _roketler: {fileID: 834159675096550770, guid: 61aa928e41f18479baca8648ce384b00,
+    type: 3}
 --- !u!95 &95669456766632362
 Animator:
   serializedVersion: 5
@@ -9857,6 +9859,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1923226423813802
 GameObject:
   m_ObjectHideFlags: 0
