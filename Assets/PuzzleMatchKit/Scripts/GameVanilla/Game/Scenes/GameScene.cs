@@ -127,7 +127,7 @@ namespace GameVanilla.Game.Scenes
 
             SoundManager.instance.AddSounds(gameSounds);
 
-            //BulunanMatchIconDegis();
+            BulunanMatchIconDegis();
 
         }
 
@@ -230,7 +230,7 @@ namespace GameVanilla.Game.Scenes
                 acbTime = 0;
 
             }
-            BulunanMatchIconDegis();
+            //BulunanMatchIconDegis();
 
             if (Input.GetMouseButtonDown(0))
             {
@@ -540,6 +540,16 @@ namespace GameVanilla.Game.Scenes
             tileEntity.Explode();
             tileEntities[tileIndex] = null;
             tileEntity.GetComponent<PooledObject>().pool.ReturnObject(tileEntity.gameObject);
+
+            if (tileEntity.GetComponent<BlockSekilDegistir>() != null)
+            {
+                tileEntity.GetComponent<BlockSekilDegistir>().DefaultAc();
+            }
+            else
+            {
+
+            }
+
             return tileScore;
         }
 
@@ -659,6 +669,8 @@ namespace GameVanilla.Game.Scenes
             //mainCamera.orthographicSize = (totalWidth * zoomLevel) * (Screen.height / (float)Screen.width) * 0.5f;
 
             OpenPopup<LevelGoalsPopup>("Popups/LevelGoalsPopup", popup => popup.SetGoals(level.goals));
+
+            //BulunanMatchIconDegis();
         }
 
         /// <summary>
@@ -757,94 +769,97 @@ namespace GameVanilla.Game.Scenes
 
         public void BulunanMatchIconDegis()
         {
-
-            suggestedMatchBlocks.Clear();
-
+            //Debug.Log("CALISTIIII");
             if (tileEntities.Count > 5)
             {
-                //var randomIdx = UnityEngine.Random.Range(0, tileEntities.Count);
-                //var randomIdx = 0;
-                if (randomIdDegeri >= tileEntities.Count)
+
+                for (int i = 0; i < tileEntities.Count; i++)
                 {
-                    randomIdDegeri = 0;
-                }
-
-                if (tileEntities[randomIdDegeri] != null)
-                {
-
-
-                    if (tileEntities[randomIdDegeri].GetComponent<Block>() != null)
+                    suggestedMatchBlocks.Clear();
+                    if (tileEntities[i] != null)
                     {
-                        if (tileEntities[randomIdDegeri].GetComponent<Block>().type == BlockType.Block1 || tileEntities[randomIdDegeri].GetComponent<Block>().type == BlockType.Block2 || tileEntities[randomIdDegeri].GetComponent<Block>().type == BlockType.Block3
-                        || tileEntities[randomIdDegeri].GetComponent<Block>().type == BlockType.Block4 || tileEntities[randomIdDegeri].GetComponent<Block>().type == BlockType.Block5 || tileEntities[randomIdDegeri].GetComponent<Block>().type == BlockType.Block6)
+                        if (tileEntities[i].GetComponent<Block>() != null)
                         {
-                            //Debug.Log("BURAYA GIRME");
-                            tileEntities[randomIdDegeri].GetComponent<BlockSekilDegistir>().DefaultAc();
+                            if (tileEntities[i].GetComponent<Block>().type == BlockType.Block1 || tileEntities[i].GetComponent<Block>().type == BlockType.Block2 || tileEntities[i].GetComponent<Block>().type == BlockType.Block3
+                            || tileEntities[i].GetComponent<Block>().type == BlockType.Block4 || tileEntities[i].GetComponent<Block>().type == BlockType.Block5 || tileEntities[i].GetComponent<Block>().type == BlockType.Block6)
+                            {
+                                //Debug.Log("BURAYA GIRME");
+                                //Debug.Log("1");
+                                tileEntities[i].GetComponent<BlockSekilDegistir>().DefaultAc();
+                            }
+                            else
+                            {
+                                //tiles.Add(tileee);
+
+                            }
                         }
                         else
                         {
-                            //tiles.Add(tileee);
 
+                        }
+
+                        if (IsColorBlock(tileEntities[i].GetComponent<TileEntity>()))
+                        {
+                            //Debug.Log("2");
+                            GetMatches(tileEntities[i], suggestedMatchBlocks);
+                        }
+
+                        // Prevent matches with all the blocks having blockers.
+                        var isValidMatch = false;
+                        foreach (var tile in suggestedMatchBlocks)
+                        {
+                            var idx = tileEntities.FindIndex(x => x == tile);
+                            if (blockers[idx] == null)
+                            {
+                                //Debug.Log("3");
+                                isValidMatch = true;
+                                //break;
+                            }
+                        }
+
+                        if (!isValidMatch)
+                        {
+                            suggestedMatchBlocks.Clear();
+                        }
+                    }
+
+                    if (suggestedMatchBlocks.Count == 5)
+                    {
+                        //Debug.Log("4");
+                        foreach (var match in suggestedMatchBlocks)
+                        {
+                            //Debug.Log("4 - 2");
+                            match.GetComponent<BlockSekilDegistir>().HorizontalAc();
+                        }
+                        //suggestedMatch = true;
+                    }
+                    else if (suggestedMatchBlocks.Count == 6)
+                    {
+                        //Debug.Log("5");
+                        foreach (var match in suggestedMatchBlocks)
+                        {
+                            //Debug.Log("5 - 2");
+                            match.GetComponent<BlockSekilDegistir>().BombAc();
+                        }
+                    }
+                    else if (suggestedMatchBlocks.Count >= 7)
+                    {
+                        //Debug.Log("6");
+                        foreach (var match in suggestedMatchBlocks)
+                        {
+                            //Debug.Log("6 - 2");
+                            match.GetComponent<BlockSekilDegistir>().RainbowAc();
                         }
                     }
                     else
                     {
 
                     }
-
-                    if (IsColorBlock(tileEntities[randomIdDegeri].GetComponent<TileEntity>()))
-                    {
-                        GetMatches(tileEntities[randomIdDegeri], suggestedMatchBlocks);
-                    }
-
-                    // Prevent matches with all the blocks having blockers.
-                    var isValidMatch = false;
-                    foreach (var tile in suggestedMatchBlocks)
-                    {
-                        var idx = tileEntities.FindIndex(x => x == tile);
-                        if (blockers[idx] == null)
-                        {
-                            isValidMatch = true;
-                            //break;
-                        }
-                    }
-
-                    if (!isValidMatch)
-                    {
-                        suggestedMatchBlocks.Clear();
-                    }
                 }
             }
 
+            //Debug.Log("BITTIIIII");
 
-            if (suggestedMatchBlocks.Count == 5)
-            {
-                foreach (var match in suggestedMatchBlocks)
-                {
-                    match.GetComponent<BlockSekilDegistir>().HorizontalAc();
-                }
-                //suggestedMatch = true;
-            }
-            else if (suggestedMatchBlocks.Count == 6)
-            {
-                foreach (var match in suggestedMatchBlocks)
-                {
-                    match.GetComponent<BlockSekilDegistir>().BombAc();
-                }
-            }
-            else if (suggestedMatchBlocks.Count >= 7)
-            {
-                foreach (var match in suggestedMatchBlocks)
-                {
-                    match.GetComponent<BlockSekilDegistir>().RainbowAc();
-                }
-            }
-            else
-            {
-
-            }
-
-            randomIdDegeri++;
         }
 
         /// <summary>
@@ -872,6 +887,7 @@ namespace GameVanilla.Game.Scenes
                     }
                 }
             }
+            BulunanMatchIconDegis();
         }
 
         /// <summary>
@@ -1086,9 +1102,12 @@ namespace GameVanilla.Game.Scenes
         {
             yield return new WaitForSeconds(0.1f);
             ApplyGravity();
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.3f);
+            BulunanMatchIconDegis();
+            yield return new WaitForSeconds(0.2f);
             CheckForCollectables();
             CheckEndGame();
+
         }
 
         public void BoosterGravityCalistir()
@@ -1223,7 +1242,7 @@ namespace GameVanilla.Game.Scenes
                     }
                 }
             }
-            //BulunanMatchIconDegis();
+
         }
 
         /// <summary>

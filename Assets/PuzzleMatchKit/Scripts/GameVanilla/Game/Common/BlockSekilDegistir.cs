@@ -13,10 +13,10 @@ public class BlockSekilDegistir : MonoBehaviour
     void Start()
     {
         //_default.SetActive(true);
-        _spriteRenderer.enabled = true;
-        _horizontal.SetActive(false);
-        _bomb.SetActive(false);
-        _rainbow.SetActive(false);
+        //_spriteRenderer.enabled = true;
+        //_horizontal.SetActive(false);
+        //_bomb.SetActive(false);
+        //_rainbow.SetActive(false);
     }
 
     public void HorizontalAc()
