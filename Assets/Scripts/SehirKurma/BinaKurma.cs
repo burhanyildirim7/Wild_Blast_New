@@ -34,7 +34,7 @@ public class BinaKurma : MonoBehaviour
 
     public void TamBinaButtonFonk()
     {
-        GameObject.Find("Bina_"+_binaNo+"_Panel").transform.GetChild(0).gameObject.SetActive(true);
+        GameObject.Find("Bina_"+ PlayerPrefs.GetInt("BinaGorseli" + _haritaNo + _binaNo) + "_Panel").transform.GetChild(0).gameObject.SetActive(true);
         GameObject.Find("ToDoListButton").GetComponent<ToDoListAcma>().AnaEkrandaPanelAcma();
 
     }
