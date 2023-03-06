@@ -1064,6 +1064,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &114401915995563524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1082,7 +1083,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2019364591143199239}
         m_TargetAssemblyTypeName: GameVanilla.Game.UI.IapRowDiamond, Assembly-CSharp
-        m_MethodName: OnPurchaseButtonPressed
+        m_MethodName: OnDiamondPurchaseButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

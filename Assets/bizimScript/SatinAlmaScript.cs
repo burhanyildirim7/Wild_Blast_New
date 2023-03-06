@@ -23,8 +23,9 @@ namespace GameVanilla.Game.Scenes
         private void Start()
         {
             var numCoins = PlayerPrefs.GetInt("num_coins");
-            var numDiamonds = PlayerPrefs.GetInt("num_diamond");
-
+            //var numDiamonds = PlayerPrefs.GetInt("num_diamond");
+            var numDiamonds = 0;
+            PlayerPrefs.SetInt("num_diamond",0);
             //Debug.Log("SAHIP OLDUGUM PARA:"+numCoins);
             if (numCoins >= 1000)
             {
@@ -42,7 +43,7 @@ namespace GameVanilla.Game.Scenes
             {
                 numCoinsText.text = numCoins.ToString();
             }
-
+            
             if (numDiamonds >= 1000)
             {
                 numDiamondsText.text = (numDiamonds / 1000f).ToString("F1") + "K";

@@ -43,9 +43,9 @@ namespace GameVanilla.Game.Common
 
         public void BuyDiamond(int amount)
         {
-            var numCoins = PlayerPrefs.GetInt("num_diamond");
-            numCoins += amount;
-            PlayerPrefs.SetInt("num_diamond", numCoins);
+            var numDiamond = PlayerPrefs.GetInt("num_diamond");
+            numDiamond += amount;
+            PlayerPrefs.SetInt("num_diamond", numDiamond);
 
         }
         /// <summary>

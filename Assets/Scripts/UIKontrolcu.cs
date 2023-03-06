@@ -7,10 +7,9 @@ using UnityEngine.UI;
 
 public class UIKontrolcu : MonoBehaviour
 {
-    [SerializeField] private Text _canText, _altinText, _elmasText, _yildizText;
+    [SerializeField] private Text _canText, _altinText, _elmasText, _yildizText,_idleCoinText;
     [SerializeField] private Text _canGeriSayimText;
     [SerializeField] private GameObject _buyCan, _buyAltin, _buyElmas;
-
 
     // Start is called before the first frame update
     void Start()
@@ -22,8 +21,8 @@ public class UIKontrolcu : MonoBehaviour
         _buyCan.transform.GetComponent<Button>().enabled= numLives == maxLives ? false : true;
         PuzzleMatchManager.instance.livesSystem.Subscribe(OnLivesCountdownUpdated, OnLivesCountdownFinished);
 
-
-
+        IdleCoinTextGuncelleme();
+        //PlayerPrefs.SetInt("HomeSceneToplamYildiz",50);
         _yildizText.text = PlayerPrefs.GetInt("HomeSceneToplamYildiz").ToString();
     }
 
@@ -64,5 +63,11 @@ public class UIKontrolcu : MonoBehaviour
     {
         PlayerPrefs.SetInt("HomeSceneToplamYildiz", PlayerPrefs.GetInt("HomeSceneToplamYildiz") - _cost);
         _yildizText.text = PlayerPrefs.GetInt("HomeSceneToplamYildiz").ToString();
+    }
+    public void IdleCoinTextGuncelleme()
+    {
+
+        _idleCoinText.text = PlayerPrefs.GetInt("GeneralIdleRevenue").ToString()+"/min";
+
     }
 }

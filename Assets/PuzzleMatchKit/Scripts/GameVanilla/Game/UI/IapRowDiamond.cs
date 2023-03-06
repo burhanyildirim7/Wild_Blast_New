@@ -110,7 +110,7 @@ namespace GameVanilla.Game.UI
         /// <summary>
         /// Called when the purchase button is pressed.
         /// </summary>
-        public void OnPurchaseButtonPressed()
+        public void OnDiamondPurchaseButtonPressed()
         {
 #if PUZZLE_MATCH_ENABLE_IAP
             GetComponent<PlaySound>().Play("Button");
