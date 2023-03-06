@@ -1,7 +1,3 @@
-// Copyright (C) 2017-2022 gamevanilla. All rights reserved.
-// This code can only be used under the standard Unity Asset Store End User License Agreement,
-// a copy of which is available at http://unity3d.com/company/legal/as_terms.
-
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
@@ -25,7 +21,7 @@ namespace GameVanilla.Game.Popups
         private GameObject iapRowPrefab;
 
         [SerializeField]
-        private Text numCoinsText;
+        private Text numDiamondsText;
 
         [SerializeField]
         private ParticleSystem coinsParticles;
@@ -39,10 +35,10 @@ namespace GameVanilla.Game.Popups
         protected override void Awake()
         {
             base.Awake();
-            Assert.IsNotNull(iapItemsParent);
-            Assert.IsNotNull(iapRowPrefab);
-            Assert.IsNotNull(numCoinsText);
-            Assert.IsNotNull(coinsParticles);
+            //Assert.IsNotNull(iapItemsParent);
+            //Assert.IsNotNull(iapRowPrefab);
+            //Assert.IsNotNull(numDiamondsText);
+            //Assert.IsNotNull(coinsParticles);
         }
 
         /// <summary>
@@ -51,17 +47,17 @@ namespace GameVanilla.Game.Popups
         protected override void Start()
         {
             base.Start();
-            var coins = PlayerPrefs.GetInt("num_diamond");
-            numCoinsText.text = coins.ToString("n0");
+            int diamondsMiktari = PlayerPrefs.GetInt("num_diamond");
+            numDiamondsText.text = diamondsMiktari.ToString("n0");
             //PuzzleMatchManager.instance.coinsSystem.Subscribe(OnCoinsChanged);
 
-            foreach (var item in PuzzleMatchManager.instance.gameConfig.iapItems)
+          /*  foreach (var item in PuzzleMatchManager.instance.gameConfig.iapItems)
             {
                 var row = Instantiate(iapRowPrefab);
                 row.transform.SetParent(iapItemsParent.transform, false);
                 row.GetComponent<IapRowDiamond>().Fill(item);
                 row.GetComponent<IapRowDiamond>().buyDiamondPopup = this;
-            }
+            }*/
         }
 
         /// <summary>
@@ -75,10 +71,11 @@ namespace GameVanilla.Game.Popups
         /// <summary>
         /// Called when the buy button is pressed.
         /// </summary>
-        /// <param name="numCoins">The number of coins to buy.</param>
-        public void OnBuyButtonPressed(int numCoins)
+        /// <param name="numDiamond">The number of coins to buy.</param>
+        public void OnBuyButtonPressed(int numDiamond)
         {
-            PuzzleMatchManager.instance.coinsSystem.BuyDiamond(numCoins);
+            Debug.Log("Buy Diamınd fonk çalıştı");
+            PuzzleMatchManager.instance.coinsSystem.BuyDiamond(numDiamond);
         }
 
         /// <summary>
@@ -92,10 +89,11 @@ namespace GameVanilla.Game.Popups
         /// <summary>
         /// Called when the number of coins changes.
         /// </summary>
-        /// <param name="numCoins">The current number of coins.</param>
-        public void OnDiamondChanged(int numCoins)
+        /// <param name="numDiamond">The current number of coins.</param>
+        public void OnDiamondChanged(int numDiamond)
         {
-            numCoinsText.text = numCoins.ToString("n0");
+            Debug.Log("diamond guncellendi");
+            numDiamondsText.text = numDiamond.ToString("n0");
             coinsParticles.Play();
             GetComponent<PlaySound>().Play("CoinsPopButton");
         }

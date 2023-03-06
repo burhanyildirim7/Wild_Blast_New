@@ -29,6 +29,15 @@ namespace GameVanilla.Game.Common
             {
                 onCoinsUpdated(numCoins);
             }
+
+            if (GameObject.Find("UIKontrolcu")!=null)
+            {
+                GameObject.Find("UIKontrolcu").GetComponent<UIKontrolcu>().CoinTextGuncelle(PlayerPrefs.GetInt("num_coins"));
+            }
+            else
+            {
+
+            }
         }
         public void LevelCoinEkle(int amount)
         {
@@ -46,6 +55,14 @@ namespace GameVanilla.Game.Common
             var numDiamond = PlayerPrefs.GetInt("num_diamond");
             numDiamond += amount;
             PlayerPrefs.SetInt("num_diamond", numDiamond);
+            if (GameObject.Find("UIKontrolcu") != null)
+            {
+                GameObject.Find("UIKontrolcu").GetComponent<UIKontrolcu>().DiamondTextGuncelle(PlayerPrefs.GetInt("num_diamond"));
+            }
+            else
+            {
+
+            }
 
         }
         /// <summary>

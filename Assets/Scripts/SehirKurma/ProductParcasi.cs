@@ -35,24 +35,20 @@ public class ProductParcasi : MonoBehaviour
             _lockedGroup.SetActive(true);
             _openingGroup.SetActive(false);
             _openedGroup.SetActive(false);
-            Debug.Log("locked ekranı");
         }
         else
         {
-            Debug.Log("locked ekranı değil");
             if (PlayerPrefs.GetInt("ProductLevel" + _productMenusu._haritaNo + _productMenusu._panelNo + _productNo) == 0)
             {
                 _lockedGroup.SetActive(false);
                 _openingGroup.SetActive(true);
                 _openedGroup.SetActive(false);
-                Debug.Log("opening ekranı");
             }
             else
             {
                 _lockedGroup.SetActive(false);
                 _openingGroup.SetActive(false);
                 _openedGroup.SetActive(true);
-                Debug.Log("opened ekranı");
             }
         }
 
@@ -84,11 +80,15 @@ public class ProductParcasi : MonoBehaviour
 
     public void UpgradeButton()
     {
+        Debug.Log("1");
         if (PlayerPrefs.GetInt("ProductCost" + _productMenusu._haritaNo + _productMenusu._panelNo + _productNo)< PlayerPrefs.GetInt("num_coins"))
         {
+            Debug.Log("2");
             if (PlayerPrefs.GetInt("ProductLevel" + _productMenusu._haritaNo + _productMenusu._panelNo + _productNo) < 20)
             {
+                Debug.Log("3");
                 PuzzleMatchManager.instance.coinsSystem.SpendCoins(PlayerPrefs.GetInt("ProductCost" + _productMenusu._haritaNo + _productMenusu._panelNo + _productNo));
+                Debug.Log("PARACEKİLDİ");
                 _productLevel = PlayerPrefs.GetInt("ProductLevel" + _productMenusu._haritaNo + _productMenusu._panelNo + _productNo) + 1;
                 PlayerPrefs.SetInt("ProductLevel" + _productMenusu._haritaNo + _productMenusu._panelNo + _productNo, _productLevel);
                 PlayerPrefs.SetInt("ProductSpendCoinForUpgrade" + _productMenusu._haritaNo + _productMenusu._panelNo + _productNo,
@@ -97,20 +97,20 @@ public class ProductParcasi : MonoBehaviour
             }
             else
             {
-
+                Debug.Log("4");
             }
 
         }
         else
         {
-
+            Debug.Log("5");
         }
 
     }
 
     private void ProductSliderGuncelleme()
     {
-        if (PlayerPrefs.GetInt("ProductLevel" + _productMenusu._haritaNo + _productMenusu._panelNo + _productNo)>=20)
+        if (PlayerPrefs.GetInt("ProductLevel" + _productMenusu._haritaNo + _productMenusu._panelNo + _productNo)>20)
         {
             _productLevel = PlayerPrefs.GetInt("ProductLevel" + _productMenusu._haritaNo + _productMenusu._panelNo + _productNo);
             _productLevelSlideri.value = _productLevel;
@@ -137,7 +137,7 @@ public class ProductParcasi : MonoBehaviour
             case 1:
                 _upgradeAmount = 100;
                 _purchaseAmountText.text = _upgradeAmount.ToString();
-                _idleCoinAmount = 0;
+                _idleCoinAmount = 5;
                 break;
             case 2:
                 _upgradeAmount = 150;
@@ -230,8 +230,7 @@ public class ProductParcasi : MonoBehaviour
                 _idleCoinAmount = 23;
                 break;
             case 20:
-                _upgradeAmount = 1050;
-                _purchaseAmountText.text = _upgradeAmount.ToString();
+                _purchaseAmountText.text = "Max Level";
                 _idleCoinAmount = 24;
                 break;
 
@@ -252,6 +251,7 @@ public class ProductParcasi : MonoBehaviour
         PlayerPrefs.SetInt("TempIdleDeger" + _productMenusu._haritaNo + _productMenusu._panelNo + _productNo, _idleDeger);
         PlayerPrefs.SetInt("GeneralIdleRevenue", PlayerPrefs.GetInt("GeneralIdleRevenue") + PlayerPrefs.GetInt("ProductIdleRevenue" + _productMenusu._haritaNo + _productMenusu._panelNo + _productNo));
         GameObject.Find("UIKontrolcu").GetComponent<UIKontrolcu>().IdleCoinTextGuncelleme();
+        GameObject.Find("UIKontrolcu").GetComponent<UIKontrolcu>().CoinTextGuncelle(PlayerPrefs.GetInt("num_coins")) ;
         _productMenusu.IdleCoinTextGuncelle();
         _productMenusu.BinaSliderGuncelle();
     }

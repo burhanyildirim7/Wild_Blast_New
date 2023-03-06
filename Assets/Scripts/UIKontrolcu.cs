@@ -22,7 +22,7 @@ public class UIKontrolcu : MonoBehaviour
         PuzzleMatchManager.instance.livesSystem.Subscribe(OnLivesCountdownUpdated, OnLivesCountdownFinished);
 
         IdleCoinTextGuncelleme();
-        //PlayerPrefs.SetInt("HomeSceneToplamYildiz",50);
+        PlayerPrefs.SetInt("HomeSceneToplamYildiz",50);
         _yildizText.text = PlayerPrefs.GetInt("HomeSceneToplamYildiz").ToString();
     }
 
@@ -70,4 +70,13 @@ public class UIKontrolcu : MonoBehaviour
         _idleCoinText.text = PlayerPrefs.GetInt("GeneralIdleRevenue").ToString()+"/min";
 
     }
+    public void CoinTextGuncelle(int numCoins)
+    {
+        _altinText.text = numCoins.ToString();
+    }
+    public void DiamondTextGuncelle(int numDiamond)
+    {
+        _elmasText.text = numDiamond.ToString();
+    }
+
 }
